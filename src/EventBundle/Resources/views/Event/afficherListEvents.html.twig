@@ -1,0 +1,126 @@
+{% extends('base.html.twig') %}
+
+{% block layout %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/event-css/event-style.css') }}" type="text/css">
+{% endblock %}
+
+{% block username %}{{ user }}{% endblock %}
+{% block content %}
+    <div class="event-body">
+
+
+        <div class="event-categories">
+            <h1>Catégorie</h1>
+
+
+
+            <div class="event-list-categories">
+    {% for categorie in categories %}
+
+                <div class="event-categorie-item">
+
+                    <img class="event-image-categorie"
+                         src="{{ asset('uploads/photos/' ~ categorie.imageEventCategorie) }}">
+
+                    <div class="event-image-categorie-opacity">
+                        <h1 class="event-categorie-titre">{{ categorie.nomEventCategorie }}</h1>
+                    </div>
+
+                </div>
+
+
+    {% endfor %}
+
+
+            </div>
+
+        </div>
+
+
+        <div class="event-search-content">
+
+
+            <div class="event-search-bar">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search-event" placeholder="Chercher un événement">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default btn-search-event" type="submit">Chercher</button>
+                    </span>
+                    </div>
+                </form>
+
+            </div>
+            <button type="button" class="btn btn-success btn-lg"><p class="btn-txt-creer-event">Créer un événement</p></button>
+
+
+
+
+
+
+
+        </div>
+
+
+
+        <div class="list-event-content" >
+
+            <h1 class="event-main-title">Evénements</h1>
+
+            <div class="list-events">
+
+    {% for event in events %}
+
+        <a href="{{ path('afficherDetailsEvent',{'idEvent':event.idEvent}) }}">
+
+            <div class="event-item">
+                <img class="event-item-image"
+                     src="{{ asset('uploads/photos/' ~ event.imageEvent) }}" >
+                <div class="event-item-description">
+
+                    <div class="event-item-description-date">
+                        <p>{{ event.dateDebutEvent |date("F jS")}}</p>
+
+                    </div>
+
+                    <div class="event-item-description-info">
+
+                        <h2>{{ event.nomEvent }}</h2>
+
+                        <p>{{ event.adresseEvent }}</p>
+
+                        <p>{{ event.heureDebutEvent|date('H:i') }} - {{ event.heureFinEvent|date('H:i') }}</p>
+
+
+                    </div>
+                    <div class="event-item-description-prix">
+                        <p>{{ event.prixEvent }} DT</p>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </a>
+
+
+    {% endfor %}
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+event_homepage:
+    path:     /
+    defaults: { _controller: EventBundle:Default:index }
+rootingEvent:
+    path:     /events
+    defaults: { _controller: EventBundle:Default:event }
+afficherListEvents:
+    path:     /afficherListEvents
+    defaults: { _controller: EventBundle:Event:afficherListEvents }
+ajouterEventCategorie:
+    path:     /ajouterEventCategorie
+    defaults: { _controller: EventBundle:EventCategorie:ajouterEventCategorie }
+ajouterEventAdmin:
+    path:     /ajouterEventAdmin
+    defaults: { _controller: EventBundle:Event:ajouterEventAdmin }
+ajouterEvent:
+    path:     /ajouterEvent
+    defaults: { _controller: EventBundle:Event:ajouterEvent }
+afficherDetailsEvent:
+    path:     /afficherDetailsEvent
+    defaults: { _controller: EventBundle:Event:afficherDetailsEvent }
+participerEvent:
+    path:     /participerEvent
+    defaults: { _controller: EventBundle:Event:participerEvent }
+
+
+
+

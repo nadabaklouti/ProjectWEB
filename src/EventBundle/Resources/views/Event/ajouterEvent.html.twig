@@ -1,0 +1,23 @@
+{% extends('base.html.twig') %}
+
+{% block layout %}
+
+       <link rel="stylesheet" href="{{ asset('assets/css/event-css/event-style.css') }}" type="text/css">
+{% endblock %}
+
+{% block username %}{{ user }}{% endblock %}
+{% block content %}
+
+    <div class="add-event-content">
+
+
+
+        <div class="add-event-form">
+            <h1>Créer un Evénement</h1>
+            {{ form(Form) }}
+
+        </div>
+    </div>
+
+
+{% endblock %}
